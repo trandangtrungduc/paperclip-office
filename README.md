@@ -1,6 +1,6 @@
 # Paperclip Office
 
-A 2D pixel-art Electron desktop app that visualizes a [Paperclip](https://paperclip.ai) AI company as a living office building. Agents, projects, issues, costs, and approvals stream in from a real Paperclip instance and animate across a multi-floor canvas, with React panels for structured metrics, activity, and drill-in modals.
+A 2D pixel-art Electron desktop app that visualizes a [Paperclip](https://github.com/paperclipai/paperclip) AI company as a living office building. Agents, projects, issues, costs, and approvals stream in from a real Paperclip instance and animate across a multi-floor canvas, with React panels for structured metrics, activity, and drill-in modals.
 
 ![Paperclip Office demo](./resources/demo.gif)
 
