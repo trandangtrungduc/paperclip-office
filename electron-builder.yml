@@ -1,0 +1,31 @@
+appId: com.virtual.office
+productName: PaperclipOffice
+# CI sets GITHUB_ACTIONS; electron-builder would try to publish without this. Releases are uploaded by GitHub Actions separately.
+publish: null
+directories:
+  buildResources: resources
+  output: release
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!tests/*'
+  - '!docs/*'
+  - '!electron.vite.config.*'
+  - '!{.eslintrc,.prettierrc,vitest.config.*}'
+  - '!{tsconfig.json,tsconfig.*.json}'
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: resources/ico.ico
+nsis:
+  installerIcon: resources/ico.ico
+  uninstallerIcon: resources/ico.ico
+  installerHeaderIcon: resources/ico.ico
+linux:
+  target:
+    - target: AppImage
+      arch:
+        - x64
+  icon: resources/icon.png

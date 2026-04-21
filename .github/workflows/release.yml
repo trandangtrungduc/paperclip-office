@@ -1,0 +1,82 @@
+# Release only when pushing a version tag (v*): build Windows (NSIS),
+# package source with git archive, then publish GitHub Release.
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build Windows installer
+        run: npm run package:win
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-installer
+          path: |
+            release/*.exe
+            release/*.exe.blockmap
+
+  source-archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create source tarball (git archive, no node_modules)
+        run: |
+          VERSION="${{ github.ref_name }}"
+          git archive --format=tar.gz \
+            --prefix="paperclip-office-${VERSION}/" \
+            -o "paperclip-office-${VERSION}-source.tar.gz" \
+            HEAD
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: source-tarball
+          path: paperclip-office-*-source.tar.gz
+
+  publish:
+    needs: [build-windows, source-archive]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: assets
+          merge-multiple: true
+
+      - name: List release files
+        run: ls -laR assets
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: PaperclipOffice ${{ github.ref_name }}
+          generate_release_notes: true
+          fail_on_unmatched_files: false
+          files: |
+            assets/*.exe
+            assets/*.tar.gz
+            assets/*.exe.blockmap
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

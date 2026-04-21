@@ -1,0 +1,88 @@
+:root {
+  /* Surface palette — warm office tones */
+  --color-bg: #1a1a2e;
+  --color-bg-raised: #16213e;
+  --color-bg-sunken: #0f0f1a;
+  --color-surface: #1e2746;
+  --color-surface-hover: #263258;
+  --color-border: #2a3a5c;
+  --color-border-subtle: #1e2d4a;
+
+  /* Text */
+  --color-text: #e0e6f0;
+  --color-text-muted: #8892a8;
+  --color-text-dim: #5a6478;
+
+  /* Accent */
+  --color-accent: #6366f1;
+  --color-accent-hover: #818cf8;
+  --color-accent-dim: #4338ca;
+
+  /* Status */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Agent roles */
+  --color-role-ceo: #fbbf24;
+  --color-role-cto: #60a5fa;
+  --color-role-cmo: #f472b6;
+  --color-role-cfo: #34d399;
+  --color-role-engineer: #818cf8;
+  --color-role-designer: #fb923c;
+  --color-role-pm: #a78bfa;
+  --color-role-qa: #2dd4bf;
+  --color-role-devops: #f87171;
+  --color-role-researcher: #c084fc;
+  --color-role-general: #94a3b8;
+
+  /* Issue priority */
+  --color-priority-critical: #ef4444;
+  --color-priority-high: #f97316;
+  --color-priority-medium: #eab308;
+  --color-priority-low: #3b82f6;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --font-pixel: 'Press Start 2P', monospace;
+
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.875rem;
+  --text-lg: 1rem;
+  --text-xl: 1.25rem;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Panel gradients */
+  --gradient-sidebar: linear-gradient(180deg, #16213e 0%, #1a1a2e 60%, #1e1633 100%);
+  --gradient-activity: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f1628 100%);
+  --glow-gold: rgba(251, 191, 36, 0.12);
+  --glow-indigo: rgba(99, 102, 241, 0.10);
+  --glow-rose: rgba(244, 114, 182, 0.10);
+  --glow-emerald: rgba(34, 211, 153, 0.10);
+
+  /* Sidebar */
+  --sidebar-width: clamp(110px, 10vw, 160px);
+  --activity-width: clamp(170px, 15vw, 240px);
+  --statusbar-height: 32px;
+}
